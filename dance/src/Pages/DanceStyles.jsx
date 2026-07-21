@@ -16,11 +16,6 @@ import bollywoodImg from "../Assets/Bollywood.png";
 import kuchipudiImg from "../Assets/Kuchipudi.png";
 
 function DanceStyles() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for subscribing to our newsletter!");
-  };
-
   return (
     <div className="bg-white text-neutral-800 font-sans antialiased">
       {/* Header & Navigation */}

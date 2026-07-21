@@ -5,18 +5,12 @@ import Footer from "../Components/Footer";
 
 
 // Import Assets
-import profileImg from "../Assets/Profile_img.png";
 import heroSecImg from "../Assets/Hero_sec.png";
 import staff1Img from "../Assets/Staff1.png";
 import staff2Img from "../Assets/Staff2.png";
 import staff3Img from "../Assets/Staff3.png";
 
 function Home() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for subscribing to our newsletter!");
-  };
-
   return (
     <div className="bg-white text-neutral-800 font-sans antialiased">
       <NavBar />

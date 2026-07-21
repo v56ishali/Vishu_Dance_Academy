@@ -9,11 +9,6 @@ import missionImg from "../Assets/Mission.png";
 import visionImg from "../Assets/Vision.png";
 
 function About() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for subscribing to our newsletter!");
-  };
-
   return (
     <div className="bg-white text-neutral-800 font-sans antialiased">
       {/* Header & Navigation (Reused NavBar component) */}
