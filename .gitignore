@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+**/node_modules/
+package-lock.json
+
+# Environment variables
+.env
+**/.env
+
+# Local build outputs
+build/
+dist/
+.DS_Store

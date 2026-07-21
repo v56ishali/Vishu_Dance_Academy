@@ -1,0 +1,49 @@
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-transition {
+  animation: pageFadeIn 0.18s ease-out forwards;
+  width: 100%;
+}
+
+/* Infinite Scrolling Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 1rem)); /* Calculates translation based on duplicate margins */
+  }
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* Soft fades at left/right edges for premium styling */
+  mask-image: linear-gradient(to right, transparent, white 8%, white 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 8%, white 92%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  gap: 2rem;
+  flex-shrink: 0;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused; /* Pause scrolling on mouse hover */
+}
+
+.alumni-carousel-card {
+  width: 380px;
+  flex-shrink: 0;
+}
