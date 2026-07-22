@@ -215,7 +215,7 @@ app.post("/api/login", async (req, res) => {
 });
 
 // 3. Applications: Create (Student or Trainer)
-app.post("/api/applications", authenticateToken, async (req, res) => {
+app.post("/api/applications", async (req, res) => {
   try {
     const newApp = new Application(req.body);
     await newApp.save();
