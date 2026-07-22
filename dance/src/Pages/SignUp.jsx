@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../Components/NavBar";
-import Footer from "../Components/Footer";
 import { API_BASE_URL } from "../config";
 
 function SignUp() {
@@ -280,9 +279,6 @@ function SignUp() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
