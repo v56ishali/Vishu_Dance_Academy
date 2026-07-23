@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../Components/NavBar";
-import Footer from "../Components/Footer";
 import { API_BASE_URL } from "../config";
 
 function AdminPanel() {
@@ -266,8 +265,6 @@ function AdminPanel() {
           </div>
         )}
       </main>
-
-      <Footer />
     </div>
   );
 }

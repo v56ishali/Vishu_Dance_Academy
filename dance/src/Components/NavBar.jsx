@@ -39,36 +39,46 @@ function NavBar() {
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-x-2 sm:gap-x-3 lg:gap-x-4 text-[11px] lg:text-sm font-semibold tracking-wider uppercase text-neutral-600 whitespace-nowrap">
-          <Link to="/" className={getLinkClass("/")}>Home</Link>
-          <Link to="/about" className={getLinkClass("/about")}>About Us</Link>
-          <Link to="/dance-styles" className={getLinkClass("/dance-styles")}>Dance Styles</Link>
-          {!(isLoggedIn && currentUser && (currentUser.role === "admin" || currentUser.role === "trainer")) && (
-            <Link to="/admission" className={getLinkClass("/admission")}>Admission</Link>
-          )}
-          <Link to="/gallery" className={getLinkClass("/gallery")}>Gallery</Link>
-          <Link to="/events" className={getLinkClass("/events")}>Events</Link>
-          <Link to="/contact" className={getLinkClass("/contact")}>Contact</Link>
-          <Link to="/faq" className={getLinkClass("/faq")}>FAQ</Link>
-
-          {/* Desktop Login / Session Actions */}
-          {isLoggedIn && currentUser ? (
+          {isLoggedIn && currentUser && currentUser.role === "admin" ? (
             <>
-              {currentUser.role === "admin" ? (
-                <Link to="/admin" className={getLinkClass("/admin")}>Admin Panel</Link>
-              ) : (
-                <Link to="/dashboard" className={getLinkClass("/dashboard")}>Dashboard</Link>
-              )}
+              <Link to="/admin" className={getLinkClass("/admin")}>Admin Panel</Link>
               <button
                 onClick={handleLogout}
-                className="ml-1 px-2.5 py-1 text-[10px] lg:text-xs border border-red-500 text-red-500 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer font-bold"
+                className="ml-1 px-2.5 py-1 text-[10px] lg:text-xs border border-red-500 text-red-500 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer font-bold animate-pulse"
               >
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="ml-1 px-2.5 py-1 text-[10px] lg:text-xs border border-[#D4AF37] text-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-white transition-all duration-300">Login</Link>
-              <Link to="/signup" className="px-2.5 py-1 text-[10px] lg:text-xs bg-[#D4AF37] text-white rounded-full hover:bg-[#AA823B] transition-all duration-300 shadow-sm shadow-[#D4AF37]/10">Sign Up</Link>
+              <Link to="/" className={getLinkClass("/")}>Home</Link>
+              <Link to="/about" className={getLinkClass("/about")}>About Us</Link>
+              <Link to="/dance-styles" className={getLinkClass("/dance-styles")}>Dance Styles</Link>
+              {!(isLoggedIn && currentUser && currentUser.role === "trainer") && (
+                <Link to="/admission" className={getLinkClass("/admission")}>Admission</Link>
+              )}
+              <Link to="/gallery" className={getLinkClass("/gallery")}>Gallery</Link>
+              <Link to="/events" className={getLinkClass("/events")}>Events</Link>
+              <Link to="/contact" className={getLinkClass("/contact")}>Contact</Link>
+              <Link to="/faq" className={getLinkClass("/faq")}>FAQ</Link>
+
+              {/* Desktop Login / Session Actions */}
+              {isLoggedIn && currentUser ? (
+                <>
+                  <Link to="/dashboard" className={getLinkClass("/dashboard")}>Dashboard</Link>
+                  <button
+                    onClick={handleLogout}
+                    className="ml-1 px-2.5 py-1 text-[10px] lg:text-xs border border-red-500 text-red-500 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer font-bold"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="ml-1 px-2.5 py-1 text-[10px] lg:text-xs border border-[#D4AF37] text-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-white transition-all duration-300">Login</Link>
+                  <Link to="/signup" className="px-2.5 py-1 text-[10px] lg:text-xs bg-[#D4AF37] text-white rounded-full hover:bg-[#AA823B] transition-all duration-300 shadow-sm shadow-[#D4AF37]/10">Sign Up</Link>
+                </>
+              )}
             </>
           )}
         </nav>
@@ -92,27 +102,9 @@ function NavBar() {
       {/* Mobile Drawer Dropdown Menu */}
       {isOpen && (
         <div className="md:hidden border-t border-[#D4AF37]/15 bg-white py-4 px-6 flex flex-col gap-y-3.5 text-xs font-bold tracking-wider uppercase text-neutral-600 shadow-lg">
-          <Link to="/" onClick={() => setIsOpen(false)} className={getLinkClass("/")}>Home</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)} className={getLinkClass("/about")}>About Us</Link>
-          <Link to="/dance-styles" onClick={() => setIsOpen(false)} className={getLinkClass("/dance-styles")}>Dance Styles</Link>
-          {!(isLoggedIn && currentUser && (currentUser.role === "admin" || currentUser.role === "trainer")) && (
-            <Link to="/admission" onClick={() => setIsOpen(false)} className={getLinkClass("/admission")}>Admission</Link>
-          )}
-          <Link to="/gallery" onClick={() => setIsOpen(false)} className={getLinkClass("/gallery")}>Gallery</Link>
-          <Link to="/events" onClick={() => setIsOpen(false)} className={getLinkClass("/events")}>Events</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)} className={getLinkClass("/contact")}>Contact</Link>
-          <Link to="/faq" onClick={() => setIsOpen(false)} className={getLinkClass("/faq")}>FAQ</Link>
-          
-          <div className="h-[1px] bg-neutral-100 my-1"></div>
-
-          {/* Mobile Session Actions */}
-          {isLoggedIn && currentUser ? (
+          {isLoggedIn && currentUser && currentUser.role === "admin" ? (
             <div className="flex flex-col gap-y-3.5">
-              {currentUser.role === "admin" ? (
-                <Link to="/admin" onClick={() => setIsOpen(false)} className={getLinkClass("/admin")}>Admin Panel</Link>
-              ) : (
-                <Link to="/dashboard" onClick={() => setIsOpen(false)} className={getLinkClass("/dashboard")}>Dashboard</Link>
-              )}
+              <Link to="/admin" onClick={() => setIsOpen(false)} className={getLinkClass("/admin")}>Admin Panel</Link>
               <button
                 onClick={() => { handleLogout(); setIsOpen(false); }}
                 className="text-left w-full text-red-500 font-bold tracking-wider uppercase cursor-pointer"
@@ -121,10 +113,38 @@ function NavBar() {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-x-4 pt-1">
-              <Link to="/login" onClick={() => setIsOpen(false)} className="w-1/2 px-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded-full text-center hover:bg-[#D4AF37] hover:text-white transition-colors duration-300">Login</Link>
-              <Link to="/signup" onClick={() => setIsOpen(false)} className="w-1/2 px-4 py-2 bg-[#D4AF37] text-white rounded-full text-center hover:bg-[#AA823B] transition-colors duration-300 shadow-sm shadow-[#D4AF37]/10">Sign Up</Link>
-            </div>
+            <>
+              <Link to="/" onClick={() => setIsOpen(false)} className={getLinkClass("/")}>Home</Link>
+              <Link to="/about" onClick={() => setIsOpen(false)} className={getLinkClass("/about")}>About Us</Link>
+              <Link to="/dance-styles" onClick={() => setIsOpen(false)} className={getLinkClass("/dance-styles")}>Dance Styles</Link>
+              {!(isLoggedIn && currentUser && currentUser.role === "trainer") && (
+                <Link to="/admission" onClick={() => setIsOpen(false)} className={getLinkClass("/admission")}>Admission</Link>
+              )}
+              <Link to="/gallery" onClick={() => setIsOpen(false)} className={getLinkClass("/gallery")}>Gallery</Link>
+              <Link to="/events" onClick={() => setIsOpen(false)} className={getLinkClass("/events")}>Events</Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)} className={getLinkClass("/contact")}>Contact</Link>
+              <Link to="/faq" onClick={() => setIsOpen(false)} className={getLinkClass("/faq")}>FAQ</Link>
+              
+              <div className="h-[1px] bg-neutral-100 my-1"></div>
+
+              {/* Mobile Session Actions */}
+              {isLoggedIn && currentUser ? (
+                <div className="flex flex-col gap-y-3.5">
+                  <Link to="/dashboard" onClick={() => setIsOpen(false)} className={getLinkClass("/dashboard")}>Dashboard</Link>
+                  <button
+                    onClick={() => { handleLogout(); setIsOpen(false); }}
+                    className="text-left w-full text-red-500 font-bold tracking-wider uppercase cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-x-4 pt-1">
+                  <Link to="/login" onClick={() => setIsOpen(false)} className="w-1/2 px-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded-full text-center hover:bg-[#D4AF37] hover:text-white transition-colors duration-300">Login</Link>
+                  <Link to="/signup" onClick={() => setIsOpen(false)} className="w-1/2 px-4 py-2 bg-[#D4AF37] text-white rounded-full text-center hover:bg-[#AA823B] transition-colors duration-300 shadow-sm shadow-[#D4AF37]/10">Sign Up</Link>
+                </div>
+              )}
+            </>
           )}
         </div>
       )}
