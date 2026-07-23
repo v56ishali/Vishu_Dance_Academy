@@ -1,4 +1,4 @@
-# Vishu's Dance Academy 🩰💃
+# Vishu's Dance Academy 
 
 Vishu's Dance Academy is a premium, full-stack web application designed for a modern dance academy. The application features user authentication (Students, Trainers, and Admins), class timetables, interactive course levels, admission application submissions, contact query forms, and custom animated navigation.
 
